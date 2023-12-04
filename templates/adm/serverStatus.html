@@ -1,0 +1,44 @@
+{% extends "header.html"  %}
+{% load static %}
+{% block body %}
+<style>
+    li {
+        margin: 20px 0px;
+    }
+
+</style>
+
+
+
+
+
+</form>
+
+<ul style="list-style-type: none; float: left; font-size: 200%;">
+    서버 상태 확인
+    <li> <form action="{% url 'webServerStatus' %}" method="POST">
+        web 서버 확인
+        <input type="text" name="ssh_account" id="ssh_account" placeholder="접속할 계정">
+        <input type="password" name="ssh_password" id="ssh_password" placeholder="비밀번호 입력">
+    
+        <input type="submit" value="확인">
+    
+        </form>
+    </li>
+    <li> <form action="{% url 'webServerStatus' %}" method="POST">
+            was 서버 확인
+        <input type="text" name="ssh_account" id="ssh_account" placeholder="접속할 계정">
+        <input type="password" name="ssh_password" id="ssh_password" placeholder="비밀번호 입력">
+    
+        <input type="submit" value="확인">
+    
+        </form> 
+    </li>
+
+</ul>
+
+<p> {{result}} </p>
+
+
+{% include "footer.html" %}
+{% endblock %}

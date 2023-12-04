@@ -1,0 +1,75 @@
+{% extends "header.html"  %}
+{% load static %}
+{% block body %}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Slot machine game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        span.money {
+            font-size: 24px;
+            font-weight: bold;
+            color: green;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="number"] {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        .spinbtn {
+            padding: 6px 10px;
+            font-size: 18px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+        .slots {
+            position: absolute;
+            left: 50%;
+            top: 35%;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="slots">
+        <h1>슬롯머신</h1>
+        <p>배팅가능한 금액: <span class="money">{{ request.session.MONEY }} won</span></p>
+        <form method="post" action="{% url 'spin_start' %}">
+            <input type="number" name="bet_money" id="bet_money" max="{{ request.session.MONEY }}">
+            <button type="submit" class="spinbtn">돌려돌려!</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+{% include "footer.html" %}
+{% endblock %}

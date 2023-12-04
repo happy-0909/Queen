@@ -1,0 +1,18 @@
+{% extends "header.html"  %}
+{% load static %}
+{% block body %}
+<style>
+    li {
+        margin: 20px 0px;
+    }
+
+</style>
+
+<title>관리자 페이지</title>
+            <ul style="list-style-type: none; float: left; font-size: 200%;">
+                <li><a href="{% url 'userlist' %}">유저 목록</a></li>
+                <li><a href="{% url 'serverStatus' %}">서버 상태</a></li>
+                <li><a href="{% url 'run' %}" style="color: red;">도주</a></li>
+            </ul>    
+{% include "footer.html" %}
+{% endblock %}

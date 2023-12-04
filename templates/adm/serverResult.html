@@ -1,0 +1,28 @@
+{% extends "header.html"  %}
+{% load static %}
+{% block body %}
+
+<div style="background-color: aliceblue; float: left;">
+    서버 이용시간  
+    <pre>{{uptime|linebreaks}}</pre>
+    메모리 사용량  
+    <div>
+        <ul style="list-style-type: none;">
+            <li style="float: left;">{{mem1}}</li>
+            <br>
+            <li style="float: left;">{{mem2}}</li>
+            <br>
+            <li style="float: left;"> {{mem3}}</li>
+
+        </ul>
+
+    </div>
+    
+
+
+</div>
+
+
+
+{% include "footer.html" %}
+{% endblock %}

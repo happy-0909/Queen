@@ -1,0 +1,16 @@
+{% extends "header.html"  %}
+{% load static %}
+{% block body %}
+
+<div style="background-color: #fff; float: left; width: 50%;">
+    위 아래
+    <form action="{% url 'lowhighStart' %}" method="post">
+        <input type="number"  name="bet_money" min="1" max="{{requset.session.MONEY}}" placeholder="베팅 금액" required>
+        <input type="submit" value="베팅">
+    </form>
+
+</div>
+
+
+{% include "footer.html" %}
+{% endblock %}

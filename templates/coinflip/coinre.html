@@ -1,0 +1,14 @@
+{% extends "header.html"  %}
+{% load static %}
+{% block body %}
+    <div style="background-color: #fff ; float: left; margin-top: 50px; font-size : 100%">
+    <h1><span style="color:black">홀짝 게임 결과</span> <img src="{% static 'assets/img/coin_spin.gif' %}"width="10%" height="10%"></h1>
+    <p>배팅 금액: {{ bet }}</p>
+    <p>내예측: {{ choice }}</p>
+    <p>확인결과: {{ com_result }}</p>
+    <p>게임 결과: {{ result }}</p>
+    <p>가진 돈 : {{request.session.MONEY}} </p>
+    <a href="{% url 'coinflip' %}">다시하기</a>
+</div>
+{% include "footer.html" %}
+{% endblock %}

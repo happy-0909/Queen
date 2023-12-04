@@ -1,0 +1,134 @@
+{% extends "header.html"  %}
+{% load static %}
+{% block body %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>슬롯머신 결과</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        div {
+            margin-top: 40px;
+        }
+
+        .slot_img >img, 
+        .slot_img1 >img {
+            width: 150px;
+            height: 150px;
+            margin: 5px;
+        }
+
+        .result {
+            font-size: 24px;
+            font-weight: bold;
+            color: rgb(0, 62, 128);
+        }
+
+        .slot_machine > a {
+            display: block;
+            margin-top: 20px;
+            margin-left: 240px;
+            width: 200px;
+            text-decoration: none;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 10px;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+        .slot_machine{ 
+            width: 700px;
+            height: 500px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+                }
+         .slot_img {
+            animation: slide 1s infinite;
+            display: none;
+            }
+        .result{
+            display: none;
+        }
+        .result2{
+            display: none;
+        }
+        .nts{
+            font-size: 20px;
+        }
+        .abc{
+              /* display: none; */
+              color: #ffffff;
+              -webkit-user-drag: none;
+        }
+        .ps{
+            text-align: end;
+            font-size: 0.5px;
+
+        }
+    </style> 
+</head>
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+    <div class="slot_machine">
+        <h1 class="result1">당신의 운명이 결정되고 있습니다....</h1>
+        <h1 class="result2">짜잔!</h1>
+        <div class="slot_img1">
+            <img src="{% get_static_prefix %}assets/img/spin.gif">
+            <img src="{% get_static_prefix %}assets/img/spin.gif">
+            <img src="{% get_static_prefix %}assets/img/spin.gif">
+        </div>
+        <div class="slot_img">
+            <img src="{% get_static_prefix %}assets/img/{{ slot1 }}.png" width="30" height="30">
+            <img src="{% get_static_prefix %}assets/img/{{ slot2 }}.png" >
+            <img src="{% get_static_prefix %}assets/img/{{ slot3 }}.png" >
+        </div>
+        <div class="result">{{ result }}</div>
+        <a href="{% url 'spin' %}">배팅금액 재 설정</a>
+        <div class="nts">새로고침시 같은 배팅금액으로 재시작 가능!</div>
+        <div class="ps">a little help inseong</div>
+    </div>
+<script>
+    var userInfoElement = document.getElementById('user-info');
+    userInfoElement.addEventListener('dragstart', function(event) {
+    event.preventDefault();
+});
+    window.onload = function() {
+        setTimeout(function() {
+            // .slot_img 클래스를 가진 요소를 찾아서 표시
+            var slotImg = document.querySelector('.slot_img');
+            var slotImg1 = document.querySelector('.slot_img1');
+            var result = document.querySelector('.result');
+            var result1 = document.querySelector('.result1');
+            var result2 = document.querySelector('.result2');
+            var abc = document.querySelector('.abc');
+            if (slotImg) {
+                slotImg.style.display = 'block';
+                slotImg1.style.display = 'none';
+                result.style.display = 'block';
+                result1.style.display = 'none';
+                result2.style.display = 'block';
+                abc.style.color='#000';
+            }
+        }, 3000); // 3초 (3000 밀리초) 후에 실행
+    };
+</script>
+</body>
+</html>
+
+{% include "footer.html" %}
+{% endblock %}

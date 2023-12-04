@@ -1,0 +1,99 @@
+{% extends "header.html"  %}
+{% load static %}
+{% block body %}
+<div id="rsp_game">
+    <h1>가위바위보 게임</h1>
+
+    
+
+    <div style="overflow:hiddlen; white-space:nowrap;">
+        <h2>현재 가진 돈</h2> <span> {{request.session.MONEY}} </span>
+    </div>
+
+    <div style="background-color: #888;">
+
+
+    </div>
+     
+    <br>
+    <div>
+        <img src="{% static 'assets/img/rsp/rock.png' %}" alt="바위" id="rock">
+        <img src="{% static 'assets/img/rsp/paper.png' %}" alt="보" id="paper">
+        <img src="{% static 'assets/img/rsp/scissors.png' %}" alt="가위" id="scissors">
+    </div>
+    
+    <input style="width: 50%;" type="number" name="bet_money" id="bet_money" max= {{request.session.MONEY}} min="0" pattern="[0-9]+" placeholder="베팅 금액을 입력해주세요" >
+    <p id="result_area"></p>
+    <!-- <form method="post" action="{% url 'rockscipaper:rsp_start' %}">
+        <label for="choice">선택: </label>
+        <select name="choice" id="choice">
+            <option value="rock"><img src="" alt=""></option>
+            <option value="paper">Paper</option>
+            <option value="scissors">Scissors</option>
+        </select>
+        <input type="number" name="bet_money" id="bet_money" max= {{request.session.MONEY}} min="0" placeholder="베팅 금액을 적어주세요">
+        <button type="submit">가위바위보!</button>
+    </form> -->
+</div>
+
+<script>
+    // 이미지 클릭 이벤트 처리
+    var temp;
+    var betmoney = 0;
+    Number(betmoney)
+    
+    document.getElementById('rock').addEventListener('click', function() {
+        temp = 'rock'
+        betmoney = document.getElementById("bet_money").value;
+        playGame(temp, betmoney);
+    });
+    document.getElementById('paper').addEventListener('click', function() {
+        temp = 'paper'
+        betmoney = document.getElementById("bet_money").value;
+        playGame(temp, betmoney);
+    });
+    document.getElementById('scissors').addEventListener('click', function() {
+        temp = 'paper'
+        betmoney = document.getElementById("bet_money").value;
+        playGame(temp, betmoney);
+    });
+
+    // 가위바위보 게임 실행 함수
+    function playGame(userChoice, betmoney) {
+        console.log(betmoney)
+        // 서버에 선택 정보(userChoice)를 보내고 결과를 받아옵니다.
+        const formData = new FormData();
+        formData.append('choice', userChoice);
+        formData.append('bet_money', betmoney);
+        fetch('/rsp_start/', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+            const resultElement = document.getElementById('game_result');
+            const resultArea = document.getElementById('result_area');
+            resultArea.innerHTML = `<p>결과: ${data.result}</p>`;
+
+            const result = data.result;
+            const user_choice = data.user_choice;
+            const computer_choice = data.computer_choice;
+            const money = data.money;
+            
+            // 결과 페이지로 리디렉션
+            const redirectUrl = `/rspResult/?result=${result}&user_choice=${user_choice}&computer_choice=${computer_choice}&money=${money}`;
+            
+            // 결과 페이지로 이동
+            window.location.href = redirectUrl;
+        })
+        .catch(error => console.error('에러 발생:', error));
+    }
+
+</script>
+
+
+
+    
+
+    {% include "footer.html" %}
+    {% endblock %}

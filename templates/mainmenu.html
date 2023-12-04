@@ -1,0 +1,23 @@
+{% extends "header.html"  %}
+{% load static %}
+{% block body %}
+ 
+<span>
+
+
+<div id="game_list">
+    <p></p>
+    <ul>
+        <li><a href= "{% url 'rockscipaper:rsp' %}"> <img src="{% static '/assets/img/game_icon_rsp.gif' %}" width="100%" height="100%" ></a></li>
+        <li><a href="{% url 'spin' %}"> <img src="{% static '/assets/img/game_icon_slot.gif' %}" width="100%" height="100%" ></a></li>
+        <li><a href="{% url 'coinflip' %}"> <img src="{% static '/assets/img/game_icon_coinplip.gif' %}" width="100%" height="100%" ></a></li>
+        <li><a href="{% url 'lowhigh' %}"> <img src="{% static '/assets/img/game_icon_hl.png' %}" width="100%" height="100%" ></a></li>
+        
+    </ul>
+</div>
+</span>
+
+
+
+{% include "footer.html" %}
+{% endblock %}

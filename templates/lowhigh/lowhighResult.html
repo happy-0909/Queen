@@ -1,0 +1,100 @@
+{% extends "header.html"  %}
+{% load static %}
+{% block body %}
+
+<div style="background-color: #fff; width: 50%; float: left;">
+	당신의 카드 
+        {% if user_pattern is 1 %}
+            <img src="{% static '/assets/img/lowhigh/heart.jpg' %}" alt="heart">
+        {% elif user_pattern is 2 %}
+            <img src="{% static '/assets/img/lowhigh/clover.jpg' %}" alt="clover">
+        {% elif user_pattern is 3 %}
+            <img src="{% static '/assets/img/lowhigh/diamond.jpg' %}" alt="diamond">
+        {% elif user_pattern is 4 %}
+            <img src="{% static '/assets/img/lowhigh/spade.jpg' %}" alt="spade">
+        {% endif %} 
+
+        
+        {% if user_num is 1 %}
+            <img src="{% static '/assets/img/lowhigh/1.jpg' %}" alt="user_num">
+        {% elif user_num is 2 %}
+            <img src="{% static '/assets/img/lowhigh/2.jpg' %}" alt="user_num">
+        {% elif user_num is 3 %}
+            <img src="{% static '/assets/img/lowhigh/3.jpg' %}" alt="user_num">
+        {% elif user_num is 4 %}
+            <img src="{% static '/assets/img/lowhigh/4.jpg' %}" alt="user_num">
+        {% elif user_num is 5 %}
+            <img src="{% static '/assets/img/lowhigh/5.jpg' %}" alt="user_num">
+        {% elif user_num is 6 %}
+            <img src="{% static '/assets/img/lowhigh/6.jpg' %}" alt="user_num">
+        {% elif user_num is 7 %}
+            <img src="{% static '/assets/img/lowhigh/7.jpg' %}" alt="user_num">
+        {% elif user_num is 8 %}
+            <img src="{% static '/assets/img/lowhigh/8.jpg' %}" alt="user_num">
+        {% elif user_num is 9 %}
+            <img src="{% static '/assets/img/lowhigh/9.jpg' %}" alt="user_num">
+        {% elif user_num is 10 %}
+            <img src="{% static '/assets/img/lowhigh/10.jpg' %}" alt="user_num">
+        {% elif user_num is 11 %}
+            <img src="{% static '/assets/img/lowhigh/J.jpg' %}" alt="user_num">
+        {% elif user_num is 12 %}
+            <img src="{% static '/assets/img/lowhigh/Q.jpg' %}" alt="user_num">
+        {% elif user_num is 13 %}
+            <img src="{% static '/assets/img/lowhigh/K.jpg' %}" alt="user_num">
+
+        {% endif %} 
+        <br>
+
+
+상대 카드
+
+        {% if com_pattern is 1 %}
+            <img src="{% static '/assets/img/lowhigh/heart.jpg' %}" alt="heart">
+        {% elif com_pattern is 2 %}
+            <img src="{% static '/assets/img/lowhigh/clover.jpg' %}" alt="clover">
+        {% elif com_pattern is 3 %}
+            <img src="{% static '/assets/img/lowhigh/diamond.jpg' %}" alt="diamond">
+        {% elif com_pattern is 4 %}
+            <img src="{% static '/assets/img/lowhigh/spade.jpg' %}" alt="spade">
+        {% endif %} 
+
+        
+        {% if com_num is 1 %}
+            <img src="{% static '/assets/img/lowhigh/1.jpg' %}" alt="user_num">
+        {% elif com_num is 2 %}
+            <img src="{% static '/assets/img/lowhigh/2.jpg' %}" alt="user_num">
+        {% elif com_num is 3 %}
+            <img src="{% static '/assets/img/lowhigh/3.jpg' %}" alt="user_num">
+        {% elif com_num is 4 %}
+            <img src="{% static '/assets/img/lowhigh/4.jpg' %}" alt="user_num">
+        {% elif com_num is 5 %}
+            <img src="{% static '/assets/img/lowhigh/5.jpg' %}" alt="user_num">
+        {% elif com_num is 6 %}
+            <img src="{% static '/assets/img/lowhigh/6.jpg' %}" alt="user_num">
+        {% elif com_num is 7 %}
+            <img src="{% static '/assets/img/lowhigh/7.jpg' %}" alt="user_num">
+        {% elif com_num is 8 %}
+            <img src="{% static '/assets/img/lowhigh/8.jpg' %}" alt="user_num">
+        {% elif com_num is 9 %}
+            <img src="{% static '/assets/img/lowhigh/9.jpg' %}" alt="user_num">
+        {% elif com_num is 10 %}
+            <img src="{% static '/assets/img/lowhigh/10.jpg' %}" alt="user_num">
+        {% elif com_num is 11 %}
+            <img src="{% static '/assets/img/lowhigh/J.jpg' %}" alt="user_num">
+        {% elif com_num is 12 %}
+            <img src="{% static '/assets/img/lowhigh/Q.jpg' %}" alt="user_num">
+        {% elif com_num is 13 %}
+            <img src="{% static '/assets/img/lowhigh/K.jpg' %}" alt="user_num">
+
+        {% endif %} 
+
+        <br>
+        베팅한 금액 : {{bet_money}}
+        <br>
+        당신의 선택 : {{selectLH}} {{result}}
+
+</div>
+
+
+{% include "footer.html" %}
+{% endblock %}

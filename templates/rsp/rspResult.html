@@ -1,0 +1,15 @@
+{% extends "header.html"  %}
+{% load static %}
+{% block body %}
+<div id="rsp_game">
+    <h1>결과</h1>
+    <p>당신의 선택: <img src="{% static 'assets/img/rsp/'|add:user_choice|add:'.png' %}" alt="user_choice"></p>
+    <p>컴퓨터의 선택: <img src="{% static 'assets/img/rsp/'|add:computer_choice|add:'.png' %}" alt="user_choice"></p>
+    <p>결과: {{ result }}</p>
+    <a href="{% url 'rockscipaper:rsp' %}">다시 하기</a>
+</div>
+   
+
+
+{% include "footer.html" %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "header.html"  %}
+{% load static %}
+{% block body %}
+<div style="background-color: #fff ; float: left; margin-top: 50px; font-size : 100%">
+<h1>홀짝 게임<img src="{% static 'assets/img/coin_spin.gif' %}"></h1>
+현재 가진 돈 : {{request.session.MONEY}}
+
+<form method="post" action="{% url 'coinre' %}">
+    {% csrf_token %}
+    <label for="bet">배팅 금액: <input type="number" name="bet"></label>
+    <label for="choice">예측 (<img src="{% static 'assets/img/coin_01.png' %} "width="5%" height="5%"> 또는 <img src="{% static 'assets/img/coin_02.png' %}"width="5%" height="5%">):</label>
+    <input type="text" id="my_choice" name="my_choice"><br>
+    <input type="submit" value="확인">
+</form>
+</div>
+{% include "footer.html" %}
+{% endblock %}
